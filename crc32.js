@@ -53,7 +53,7 @@ function crc32_bstr(bstr, seed) {
 		C = (C>>>8) ^ T[(C^bstr.charCodeAt(i++))&0xFF];
 	}
 	if(i === L) C = (C>>>8) ^ T[(C ^ bstr.charCodeAt(i))&0xFF];
-	return C ^ -1;
+	return (C ^ (-1)) >>> 0;
 }
 
 function crc32_buf(buf, seed) {
@@ -66,7 +66,7 @@ function crc32_buf(buf, seed) {
 		C = (C>>>8) ^ T[(C^buf[i++])&0xFF];
 	}
 	while(i < L+3) C = (C>>>8) ^ T[(C^buf[i++])&0xFF];
-	return C ^ -1;
+	return (C ^ (-1)) >>> 0;
 }
 
 function crc32_buf_8(buf, seed) {
@@ -82,7 +82,7 @@ function crc32_buf_8(buf, seed) {
 		C = (C>>>8) ^ T[(C^buf[i++])&0xFF];
 	}
 	while(i < L+7) C = (C>>>8) ^ T[(C^buf[i++])&0xFF];
-	return C ^ -1;
+	return (C ^ (-1)) >>> 0;
 }
 
 function crc32_str(str, seed) {
@@ -106,7 +106,7 @@ function crc32_str(str, seed) {
 			C = (C>>>8) ^ T[(C ^ (128|(c&63)))&0xFF];
 		}
 	}
-	return C ^ -1;
+	return (C ^ (-1)) >>> 0;
 }
 CRC32.table = T;
 // $FlowIgnore
